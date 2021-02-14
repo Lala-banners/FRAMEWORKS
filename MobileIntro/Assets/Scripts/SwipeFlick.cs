@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MobileInput : MonoBehaviour
+public class SwipeFlick : MonoBehaviour
 {
     //This script will handle swiping/flicking
     //Swiping is a series of points - will swipe every frame - do this with nested classes
