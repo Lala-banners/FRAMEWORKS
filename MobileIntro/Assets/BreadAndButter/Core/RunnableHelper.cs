@@ -44,6 +44,28 @@ namespace BreadAndButter
                     return true;
                 }
             }
+
+            //We failed to get any instance of the runnable, so return false
+            return false;
+        }
+
+        /// <summary>
+        /// Attempts to validate then set up IRunnable, returning whether or not it succeeded
+        /// </summary>
+        /// <param name="_runnable">The runnable being set up</param>
+        /// <param name="_from">The gameObject the runnable is attached to</param>
+        /// <param name="_params">Any additional info from Runnable's setup function needs</param>
+        public static bool Setup<T>(ref T _runnable, GameObject _from, params object[] _params) where T : IRunnable
+        {
+            //Validate the component, if we can, set it up and return true
+            if (Validate(ref _runnable, _from))
+            {
+                _runnable.Setup(_params);
+                return true;
+            }
+
+            //We failed to validate the component, so return false
+            return false;
         }
     }
 }
