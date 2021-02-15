@@ -12,6 +12,8 @@ public class MobileTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Test joystick
+        transform.position += transform.forward * MobileInput.GetJoystickAxis(JoystickAxis.Vertical) * Time.deltaTime;
+        transform.position += transform.right * MobileInput.GetJoystickAxis(JoystickAxis.Horizontal) * Time.deltaTime;
     }
 }

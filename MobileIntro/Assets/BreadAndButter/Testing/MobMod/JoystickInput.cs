@@ -11,7 +11,7 @@ namespace BreadAndButter.Mobile
         Vertical
     }
 
-    public class JoystickInput : MonoBehaviour
+    public class JoystickInput : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler //Need interfaces for event systems
     {
         //Joystick = dragging and changing position of things
 
