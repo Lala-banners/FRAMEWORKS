@@ -4,18 +4,22 @@ using UnityEngine;
 
 namespace BreadAndButter
 {
-    public class RunnableBehaviour : MonoBehaviour
+    public abstract class RunnableBehaviour : MonoBehaviour, IRunnable
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        public bool Enabled { get; set; }
 
+        public void Run(params object[] _params)
+        {
+            
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Setup(params object[] _params)
         {
-
+            
         }
+
+        protected abstract void OnSetup(params object[] _params);
+        protected abstract void OnRun(params object[] _params);
+
     }
 }
