@@ -11,12 +11,12 @@ namespace BreadAndButter.Mobile //Make namespace - tip for specificity, do names
         /// Creating a Framework. 
         /// 1. Namespace
         /// 2. Make singleton (static instance that can be directly referenced without getting the object)
-        /// 3. Make lamda/global variable (=>)
+        /// 3. Make lambda/global variable (=>)
         /// 4. Make function to initialise system
         /// 5. Reference using namespace in all relevant scripts including modules
         /// </summary>
 
-        //Has mobile input system been initialised? Detecting if instance is not null
+        //Has mobile input system been initialised? Detecting if instance is not null lambda
         public static bool Initialised => instance != null;
 
         //Singleton reference instance
@@ -41,5 +41,41 @@ namespace BreadAndButter.Mobile //Make namespace - tip for specificity, do names
             instance.gameObject.name = "Mobile Input";
             DontDestroyOnLoad(instance.gameObject);
         }
+
+        /// <summary>
+        /// Returns the value of the joystick axis from the joystick module if it is valid
+        /// </summary>
+        /// <param name="_axis">The axis to get the input from, H = x; V = y</param>
+        /// <returns></returns>
+        public static float GetJoystickAxis(JoystickAxis _axis)
+        {
+            //If the mobile input isn't initialised, throw InvalidOperationException
+            if(!Initialised)
+            {
+                throw new InvalidOperationException("Mobile Input is not initialised!");
+            }
+
+            //James proofing so no one goofs super dumb
+            //If joystick module isn't set throw NullReferenceException
+            if(instance.joystickInput == null)
+            {
+                throw new NullReferenceException("Joystick Input not set!");
+            }
+
+            //Switch on the passed axis and return the appropriate value - (hotkey for switch: tab twice, fill in the parameter and press enter twice)
+            switch (_axis)
+            {
+                case JoystickAxis.Horizontal: 
+                    return instance.joystickInput.Axis.x;
+
+                case JoystickAxis.Vertical: 
+                    return instance.joystickInput.Axis.y;
+                default: return 0;
+            }
+        }
+
+        [SerializeField]
+        private JoystickInput joystickInput;
+
     }
 }
