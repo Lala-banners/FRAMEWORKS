@@ -67,5 +67,19 @@ namespace BreadAndButter
             //We failed to validate the component, so return false
             return false;
         }
+
+        /// <summary>
+        /// Attempts to validate the runnable, returning whether or not it succeeded
+        /// </summary>
+        /// <param name="_runnable">The runnable being set up</param>
+        /// <param name="_from">The gameObject the runnable is attached to</param>
+        /// <param name="_params">Any additional info from Runnable's Run function needs</param>
+        public static void Run<T>(ref T _runnable, GameObject _from, params object[] _params) where T : IRunnable
+        {
+            if (Validate(ref _runnable, _from))
+            {
+                _runnable.Run(_params);
+            }
+        }
     }
 }

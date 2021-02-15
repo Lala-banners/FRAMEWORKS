@@ -45,6 +45,6 @@ namespace BreadAndButter
         /// <summary>
         /// Force the singleton instance to not be destroyed on scene load
         /// </summary>
-        public static void FlagAsPersistent() => DontDestroyOnLoad(Instance.gameObject);
+        public static void FlagAsPersistant() => DontDestroyOnLoad(Instance.gameObject);
     }
 }
