@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwipeFlick : MonoBehaviour
+public class SwipeFlickInput : MonoBehaviour
 {
     //This script will handle swiping/flicking
     //Swiping is a series of points - will swipe every frame - do this with nested classes
@@ -45,23 +45,23 @@ public class SwipeFlick : MonoBehaviour
     /// <summary>
     /// The direction that the flick last occured, positive infinity means no flick occured
     /// </summary>
-    public static Vector2 FlickDirection { get; private set; }
+    public Vector2 FlickDirection { get; private set; }
     
     /// <summary>
     /// How hard and far the player flicked, positive infinity means no flick
     /// </summary>
-    public static float FlickPower { get; private set; } = float.PositiveInfinity;
+    public float FlickPower { get; private set; } = float.PositiveInfinity;
 
 
-    //public static int SwipeCount { get { return swipes.Count; } }
+    //public int SwipeCount { get { return swipes.Count; } }
 
     /// <summary>
     /// The count of how many swipes are in progress
     /// </summary>
-    public static int SwipeCount => swipes.Count; //This is a lamda - it returns properties without the brackets eg of code candy (if if statement is only one line, don't need the brackets)
+    public int SwipeCount => swipes.Count; //This is a lamda - it returns properties without the brackets eg of code candy (if if statement is only one line, don't need the brackets)
 
     //Contains all the swipes currently being processed, each key is corresponding fingerId
-    private static Dictionary<int, Swipe> swipes = new Dictionary<int, Swipe>();
+    private Dictionary<int, Swipe> swipes = new Dictionary<int, Swipe>();
     #endregion
 
     #region Variables
@@ -80,17 +80,12 @@ public class SwipeFlick : MonoBehaviour
     /// </summary>
     /// <param name="_index">The fingerID we are attempting to get the swipe for.</param>
     /// <returns>The corresponding swipe if it exists, otherwise return null.</returns>
-    public static Swipe GetSwipe(int _index)
+    public Swipe GetSwipe(int _index)
     {
         //out parameter must be set to something
         Swipe temp;
         swipes.TryGetValue(_index, out temp); //Out parameter assigns the passed variable to the corresponding key if it exists
         return temp;
-    }
-
-    private void Start()
-    {
-
     }
 
     // Update is called once per frame

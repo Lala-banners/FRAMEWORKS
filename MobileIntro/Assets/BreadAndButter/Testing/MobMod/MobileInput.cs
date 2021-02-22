@@ -74,8 +74,58 @@ namespace BreadAndButter.Mobile //Make namespace - tip for specificity, do names
             }
         }
 
+        #region Swiper No Swiping
+        /// <summary>
+        /// Attempts to retreive the relevant swipe information relating to the passed ID. SWIPER NO SWIPING!
+        /// </summary>
+        /// <param name="_index">The fingerID we are attempting to get the swipe for.</param>
+        /// <returns>The corresponding swipe if it exists, otherwise return null.</returns>
+        public SwipeFlickInput.Swipe GetSwipe(int _index)
+        {
+            //If the swipe input isn't initialised, throw InvalidOperationException
+            if (!Initialised)
+            {
+                throw new InvalidOperationException("Swipe Input is not initialised!");
+            }
+
+            //James proofing so no one goofs super dumb
+            //If swipe module isn't set throw NullReferenceException
+            if (instance.swipeInput == null)
+            {
+                throw new NullReferenceException("Swipe Input not set!");
+            }
+
+            //Retreive the swipe for this index from the swipe manager
+            return instance.swipeInput.GetSwipe(_index);
+        }
+        #endregion
+
+        #region Flick Stuff
+        public static void GetFlickData(out float _flickPowPow, out Vector2 _flickDir)
+        {
+            //If the flick input isn't initialised, throw InvalidOperationException
+            if (!Initialised)
+            {
+                throw new InvalidOperationException("Flick Input is not initialised!");
+            }
+
+            //James proofing so no one goofs super dumb
+            //If flick module isn't set throw NullReferenceException
+            if (instance.swipeInput == null)
+            {
+                throw new NullReferenceException("Flick Input not set!");
+            }
+
+            //Set out params to their corresponding values in swipe flick input class
+            _flickPowPow = instance.swipeInput.FlickPower;
+            _flickDir = instance.swipeInput.FlickDirection;
+        }
+        #endregion
+
         [SerializeField]
         private JoystickInput joystickInput;
+        [SerializeField]
+        private SwipeFlickInput swipeInput;
 
     }
 }
