@@ -30,7 +30,7 @@ namespace BreadAndButter.Mobile //Make namespace - tip for specificity, do names
             //If the mobile input is already initialised, throw an Exception to tell the user they dun goofed.
             if(Initialised)
             {
-                throw new InvalidOperationException("Mobile Input already initialised!");
+                throw new InvalidOperationException("Joystick Input already initialised!");
             }
 
             //Load the Mobile Input Prefab and instantiate it, setting the instance
