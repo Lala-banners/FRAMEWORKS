@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 using NullReferenceException = System.NullReferenceException; //Same for null reference exceptions - gives feedback to users and us about specific errors that occur for specific reasons
 using InvalidOperationException = System.InvalidOperationException; //If there is one component of UnityEngine that we want to access
@@ -16,7 +17,9 @@ namespace BreadAndButter.Mobile //Make namespace - tip for specificity, do names
         /// 5. Reference using namespace in all relevant scripts including modules
         /// </summary>
 
-        //Has mobile input system been initialised? Detecting if instance is not null lambda
+        public Image swiperFunny;
+
+        //Has mobile input system been initialised? Detecting if instance is not null: lambda
         public static bool Initialised => instance != null;
 
         //Singleton reference instance
@@ -42,6 +45,8 @@ namespace BreadAndButter.Mobile //Make namespace - tip for specificity, do names
             DontDestroyOnLoad(instance.gameObject);
         }
 
+
+        #region JOYSTICK
         /// <summary>
         /// Returns the value of the joystick axis from the joystick module if it is valid
         /// </summary>
@@ -73,8 +78,9 @@ namespace BreadAndButter.Mobile //Make namespace - tip for specificity, do names
                 default: return 0;
             }
         }
+        #endregion
 
-        #region Swiper No Swiping
+        #region SWIPER NO SWIPING
         /// <summary>
         /// Attempts to retreive the relevant swipe information relating to the passed ID. SWIPER NO SWIPING!
         /// </summary>
@@ -85,6 +91,7 @@ namespace BreadAndButter.Mobile //Make namespace - tip for specificity, do names
             //If the swipe input isn't initialised, throw InvalidOperationException
             if (!Initialised)
             {
+                Instantiate(swiperFunny);
                 throw new InvalidOperationException("Swipe Input is not initialised!");
             }
 
