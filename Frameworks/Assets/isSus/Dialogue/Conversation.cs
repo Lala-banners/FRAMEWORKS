@@ -27,6 +27,8 @@ namespace isSus.Dialogue
         }
 
         [SerializeField] private DLine[] dialogueLines;
-        public DLine[] Lines => dialogueLines; 
+        public DLine[] Lines => dialogueLines;
+
+        public int lineIndex = 0;
     }
 }

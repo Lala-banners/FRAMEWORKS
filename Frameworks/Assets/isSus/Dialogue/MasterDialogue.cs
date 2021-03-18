@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 namespace isSus.Dialogue
 {
@@ -22,8 +24,33 @@ namespace isSus.Dialogue
         }
         #endregion
 
+        [SerializeField] private Image faceIcon;
+        [SerializeField] private Button nextButton, byeButton, accButton, decButton;
+        [SerializeField] private TMP_Text nameText, dialogueText;
 
+        private Conversation activeDialogue;
 
+        public void UpdateDisplay()
+        {
+            Conversation.DLine lines = activeDialogue.Lines[activeDialogue.lineIndex];
+            faceIcon.sprite = lines.individual.Face;
+            nameText.text = lines.individual.name;
+            dialogueText.text = lines.dialogueText;
+
+            for (int i = 0; i < lines.actions.Length; i++)
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// Change active index to go to a specific line of dialogue.
+        /// </summary>
+        private void GoToDialogueLine(int _index)
+        {
+            activeDialogue.lineIndex = _index;
+            UpdateDisplay();
+        }
     }
 
     /// <summary>
