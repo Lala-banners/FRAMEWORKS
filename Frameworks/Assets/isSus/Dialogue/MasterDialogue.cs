@@ -46,7 +46,7 @@ namespace isSus.Dialogue
         /// <summary>
         /// Change active index to go to a specific line of dialogue.
         /// </summary>
-        private void GoToDialogueLine(int _index)
+        private void GoToLine(int _index)
         {
             activeDialogue.lineIndex = _index;
             UpdateDisplay();
