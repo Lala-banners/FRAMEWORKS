@@ -2,10 +2,7 @@ using System;
 
 public class Temperature : IComparable
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="obj"></param>
+
     /// <returns>
     /// Less than zero         - The current instance precedes the object specified by the CompareTo method in the sort order.
     /// Zero                   - This current instance occurs in the same position in the sort order as the object specified by the CompareTo method.
