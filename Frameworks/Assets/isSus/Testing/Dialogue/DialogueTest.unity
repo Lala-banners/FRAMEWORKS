@@ -384,6 +384,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 977620292}
     m_Modifications:
+    - target: {fileID: 7367532534974446764, guid: 11977323f4369e847b0509b4e9cf0f51, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7367532535293026326, guid: 11977323f4369e847b0509b4e9cf0f51, type: 3}
       propertyPath: m_Name
       value: Dialogue Prefab
